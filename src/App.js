@@ -5,7 +5,7 @@ import {Route, NavLink} from 'react-router-dom';
 
 //Design
 import styled from 'styled-components';
-import { Button } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
 
 //Components
 import Home from './components/Home';
@@ -15,21 +15,33 @@ import StoryForm from './components/StoryForm';
 
 const Styles = styled.div`
     .nav-container {
-        max-width: 95vw;
-        width: 800px;
         margin: 0 auto;
-        padding: 0.5rem 0;
+        padding: 0.7rem;
         justify-content: space-between;
-        align-items: bottom;
+        align-items: center;
         display: flex;
     }
 
     .nav {
         display: flex;
         flex-direction: row;
+        width: 45%;
+        justify-content: flex-end;
+        align-items: center;
+
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: flex-start;
         justify-content: space-evenly;
-        border: 1px solid red;
-        width: 200px;
+        margin-right: 10%;
+        width: 55%;
+    }
+
+    .log-btn {
+        display: flex;
+        justify-content: flex-end;
     }
 `
 
@@ -40,15 +52,18 @@ function Nav(props){
             <div className='nav-container'>
                 <NavLink exact to="/">Refugee Stories </NavLink>
                 <div className="nav">
-                    <NavLink to="/about">About</NavLink>
-                    <NavLink to="/stories">Stories</NavLink>
+                    <div className='nav-links'>
+                        <NavLink to="/about">About</NavLink>
+                        <NavLink to="/stories">Stories</NavLink>
+                        {props.loggedIn ? 
+                            <NavLink to="/story-form">Share</NavLink> : 
+                            null }
+                    </div>
+                
                     {props.loggedIn ? 
-                        <NavLink to="/story-form">Share</NavLink> : 
-                        null }
+                        <button onClick={props.logout} className='log-btn'>Logout</button> :
+                        <button onClick={props.onShow} className='log-btn'>Login</button>}
                 </div>
-                {props.loggedIn ? 
-                    <Button onClick={props.logout}>Logout</Button> :
-                    <Button onClick={props.onShow}>Login</Button>}
             </div>
         </Styles>
     )

@@ -12,13 +12,13 @@ class StoryListView extends React.Component {
         stories: [],
     };
 
-   async componentDidMount(){
-       await axios
-            .get('https://ancient-ocean-58774.herokuapp.com/stories')
-            .then(res => {
-                const s = res.data.s;
-                this.setState({stories: s})
-            })
+   componentDidMount(){
+       axios
+        .get('https://ancient-ocean-58774.herokuapp.com/stories')
+        .then(res => {
+            const s = res.data.s;
+            this.setState({stories: s})
+        })
     }
 
     render() {

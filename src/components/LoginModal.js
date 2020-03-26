@@ -6,18 +6,32 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
     .login-container {
-        border: 1px solid red;
         color: black;
         display: flex;
         flex-flow: column;
-        height: 200px;
+        height
+    }
+
+    .login-options {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 100px;
+
+        p {
+            margin-bottom: 0;
+        }
     }
 
     .login-button {
-        color: black;
         width: 100px;
         margin: 0 auto;
         margin-top: 20px;
+    }
+
+    .confirm {
+        margin-top: 15px;
     }
 `
 
@@ -29,8 +43,10 @@ class LoginModal extends Component{
         },
         register: {
             username: '',
-            password: ''
+            password: '',
+            
         },
+        confirm: '',
         registerModal: false,
     };
 
@@ -54,6 +70,14 @@ class LoginModal extends Component{
         console.log('register', e.target.value)
     };
 
+
+    handleConfirmChanges = e => {
+        this.setState({
+                [e.target.name]: e.target.value
+        });
+        console.log('confirm', e.target.value)
+    };
+
     handleLoginSubmit = event => {
         event.preventDefault();
         
@@ -65,20 +89,21 @@ class LoginModal extends Component{
                 console.log('response', res.data.token)
                 localStorage.setItem('jwt', res.data.token);
                 // //below code redirects user upon successful login
-                // window.location = "#/approvals";
+                
                 this.props.login()
+                this.props.onHide()
                 console.log(this.props.loggedIn)
             
             })
             .catch(err => {
                 console.log(err);
-                window.location = "/";
+                alert('Username and/or Password combination is incorrect')
             })
     };
 
     handleRegisterSubmit = event => {
         event.preventDefault();
-
+        if(this.state.register.password == this.state.confirm){
         axios
             .post('https://ancient-ocean-58774.herokuapp.com/register', this.state.register)
             .then(res => {
@@ -86,15 +111,17 @@ class LoginModal extends Component{
                 localStorage.setItem('jwt', res.data.token);
                 // localStorage.setItem('isLoggedIn', true);
                 // //below code redirects user upon successful login
-                // window.location = "#/approvals";
-                // this.props.loggedIn = true
-                // console.log(this.props.loggedIn)
-                // document.location.reload(true);
-            
+                this.setState({
+                    registerModal: false,
+                })
+                alert(`Registration Successful, Welcome ${this.state.register.username} Please Sign-in`)
             })
             .catch(err => {
                 console.log(err);
             })
+        } else {
+            alert('here')
+        }
     };
 
     showRegister = () => {
@@ -102,7 +129,6 @@ class LoginModal extends Component{
             registerModal: !this.state.registerModal
         })
     };
-
 
     render(){
         return(
@@ -116,7 +142,7 @@ class LoginModal extends Component{
             >
                 <Modal.Header closeButton>
                     <Modal.Title id='contained-modal-title-vcenter'>
-                        Heading
+                        Registration
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -146,8 +172,21 @@ class LoginModal extends Component{
                                         value={this.state.register.password} 
                                     />
                                 </InputGroup>
-                                <Button color="secondary" className='login-button'>Register</Button>
-                                <p>If you have an Account <span onClick={() => {this.showRegister()}}>Sign-In</span></p>
+                                <InputGroup className='confirm'>
+                                    <InputGroupAddon addonType="prepend">Confirm</InputGroupAddon>
+                                        <Input
+                                            name="confirm" 
+                                            placeholder="Confirm Password" 
+                                            type="password" 
+                                            step="1"
+                                            onChange={this.handleConfirmChanges}
+                                            value={this.state.confirm} 
+                                        />
+                                </InputGroup>
+                                <div className='login-options'>
+                                    <button onClick={this.handleRegisterSubmit} className='login-button'>Register</button>
+                                    <p>If you have an Account <button onClick={() => {this.showRegister()}}>Sign-In</button></p>
+                                </div>
                             </form>
                         </div>
                     </Styles>
@@ -165,7 +204,7 @@ class LoginModal extends Component{
             >
                 <Modal.Header closeButton>
                     <Modal.Title id='contained-modal-title-vcenter'>
-                        Heading
+                        Login
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -195,8 +234,10 @@ class LoginModal extends Component{
                                         value={this.state.login.password} 
                                     />
                                 </InputGroup>
-                                <Button color="secondary" className='login-button'>Log-in</Button>
-                                <p>Or Create an Account <button onClick={() => {this.showRegister()}}>Sign-Up</button></p>
+                                <div className='login-options'>
+                                    <button className='login-button'>Log-in</button>
+                                    <p>Or Create an Account <button onClick={() => {this.showRegister()}}>Sign-Up</button></p>
+                                </div>
                             </form>
                         </div>
                     </Styles>

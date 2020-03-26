@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 //Images
-import background from '../assets/dcenter.jpg';
+import background from '../assets/refugee.jpg';
 import jchan from '../assets/jchan.jpg';
 import einstein from '../assets/albert-einstein.jpg';
 import jesus from '../assets/jesus.jpg';
@@ -9,7 +9,7 @@ import trapp from '../assets/vontrapp.jpg';
 
 //Design
 import styled from 'styled-components';
-import { Container } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const Styles = styled.div`
     .header-img {
@@ -17,7 +17,6 @@ const Styles = styled.div`
         left: 0;
         right: 0;
         z-index: -1;
-        filter: grayscale(100%) brightness(250%) contrast(100%);
       
         display: block;
         background-image: url(${background});
@@ -62,14 +61,8 @@ const Styles = styled.div`
         margin: 0 1rem;
     }
 
-    .facts li {
-        background: var(--clean);
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        color: var(--vermillion);
-        margin-bottom: 1rem;
+    .facts {
+        margin-top: 2em;
     }
     
     @media(min-width: 600px) {
@@ -103,15 +96,19 @@ class Content extends Component {
     render() {
         return(
             <Styles>
-                <Container class="container">
-                    <section class="facts" id="facts">
+                <Container className="container">
+                    <Row className="facts" id="facts">
+                        <Col>
                             <h3>What is a Refugee?</h3>
                             <p>A refugee is someone who has been forced to flee his or her country because of persecution, war, or violence. 
                                 A refugee has a well-founded fear of persecution for reasons of race, religion, nationality or political opinion.
-                                </p>
+                            </p>
+                        </Col>
+                        <Col>
                             <h3>Reasons for Displacement</h3>
                             <p>Individuals and families seek asylum and safe refuge because they have fled violence, persecution, war, or natural disaster.2 Some refugees have contended with more than one of these factors at once.</p>
-
+                        </Col>
+                        </Row>
                             <h3>Some Famous Refugees</h3>
                             <h4>Jackie Chan</h4>
                             <p> Fled to the US from Hong Kong after being threatened with Death by the Triads</p>
@@ -125,8 +122,7 @@ class Content extends Component {
                             <h4>Georg Ritter von Trapp</h4>
                             <p>Father of the Trapp family, whose story inspired the Sound of Music, fled Nazi occupied Austria</p>
                             <img className='famous-img' src={trapp}></img>
-                            
-                    </section>
+                                         
                 </Container>
             </Styles>
         )

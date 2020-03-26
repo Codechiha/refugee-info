@@ -52,11 +52,10 @@ class Login extends Component {
                 // //below code redirects user upon successful login
                 // window.location = "#/approvals";
                 // document.location.reload(true);
-            
             })
             .catch(err => {
                 console.log(err);
-                window.location = "/";
+                alert('You have entered a wrong Username or Password')
             })
     }
 
