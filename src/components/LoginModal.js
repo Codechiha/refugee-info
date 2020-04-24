@@ -4,6 +4,7 @@ import { InputGroup, InputGroupAddon, Input, Button } from 'reactstrap';
 import axios from 'axios';
 import styled from 'styled-components';
 
+
 const Styles = styled.div`
     .login-container {
         color: black;
@@ -25,13 +26,18 @@ const Styles = styled.div`
     }
 
     .login-button {
-        width: 100px;
+        width: 132px;
         margin: 0 auto;
         margin-top: 20px;
     }
 
     .confirm {
         margin-top: 15px;
+    }
+
+    .signup {
+        display: flex; 
+        flex-direction: row;
     }
 `
 
@@ -183,10 +189,8 @@ class LoginModal extends Component{
                                             value={this.state.confirm} 
                                         />
                                 </InputGroup>
-                                <div className='login-options'>
                                     <button onClick={this.handleRegisterSubmit} className='login-button'>Register</button>
-                                    <p>If you have an Account <button onClick={() => {this.showRegister()}}>Sign-In</button></p>
-                                </div>
+                                    <button onClick={() => {this.showRegister()}}>Sign-In</button>=
                             </form>
                         </div>
                     </Styles>
@@ -235,8 +239,8 @@ class LoginModal extends Component{
                                     />
                                 </InputGroup>
                                 <div className='login-options'>
-                                    <button className='login-button'>Log-in</button>
-                                    <p>Or Create an Account <button onClick={() => {this.showRegister()}}>Sign-Up</button></p>
+                                    <button className='login-button'>Login</button>
+                                    <button onClick={() => {this.showRegister()}}>Sign-Up</button>
                                 </div>
                             </form>
                         </div>

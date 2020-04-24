@@ -9,7 +9,7 @@ import trapp from '../assets/vontrapp.jpg';
 
 //Design
 import styled from 'styled-components';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Carousel, CarouselItem, CarouselCaption } from 'react-bootstrap';
 
 const Styles = styled.div`
 
@@ -104,6 +104,12 @@ const Styles = styled.div`
     .famous-img {
         width: 200px;
     }
+
+    .carousel {
+        p {
+            color: white;
+        }
+    }
   
 `
 
@@ -124,22 +130,58 @@ class Content extends Component {
                             <h3>Reasons for Displacement</h3>
                             <p>Individuals and families seek asylum and safe refuge because they have fled violence, persecution, war, or natural disaster.2 Some refugees have contended with more than one of these factors at once.</p>
                         </Col>
-                        </Row>
-                        <div></div>
-                            <h3>Some Famous Refugees</h3>
-                            <h4>Jackie Chan</h4>
-                            <p> Fled to the US from Hong Kong after being threatened with Death by the Triads</p>
-                            <img className='famous-img' src={jchan}></img>
-                            <h4>Albert Einstein</h4>
-                            <p>One of the world's most famous scientists, was a German-Jewish refugee</p>
-                            <img className='famous-img' src={einstein}></img>
-                            <h4>Jesus</h4>
-                            <p>His family fled from the holy land because of King Herod</p>
-                            <img className='famous-img' src={jesus}></img>
-                            <h4>Georg Ritter von Trapp</h4>
-                            <p>Father of the Trapp family, whose story inspired the Sound of Music, fled Nazi occupied Austria</p>
-                            <img className='famous-img' src={trapp}></img>
-                                         
+                        </Row>             
+                        <Carousel className='carousel'>
+                            <Carousel.Item>
+                                <img
+                                className="d-block w-100"
+                                src={jchan}
+                                alt="First slide"
+                                />
+                                <Carousel.Caption>
+                                <h3>Jackie Chan</h3>
+                                <p>An international household name as an action movie star who does his own stunts with a loveable accent. Fled to the US from Hong Kong after being threatened with Death by the Triads</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img
+                                className="d-block w-100"
+                                src={einstein}
+                                alt="Third slide"
+                                />
+
+                                <Carousel.Caption>
+                                <h3>Albert Einstein</h3>
+                                <p>
+                                    One of the world's most famous scientists, was a German-Jewish refugee</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img
+                                className="d-block w-100"
+                                src={trapp}
+                                alt="Third slide"
+                                />
+
+                                <Carousel.Caption>
+                                <h3>Georg Ritter Von Trappe</h3>
+                                <p>Father of the Trapp family, whose story inspired the Sound of Music, fled Nazi occupied Austria</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img
+                                className="d-block w-100"
+                                src={jesus}
+                                alt="Third slide"
+                                />
+
+                                <Carousel.Caption>
+                                <h3>Jesus</h3>
+                                <p>Matthew 2:13-15, referring to Jesus as the child, {'\n'}
+                                    13 ...an angel of the Lord appeared to Joseph in a dream. “Get up,” he said, “take the child and his mother and escape to Egypt. Stay there until I tell you, for Herod is going to search for the child to kill him."</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                        </Carousel>
                 </Container>
             </Styles>
         )

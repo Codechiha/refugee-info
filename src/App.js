@@ -13,6 +13,9 @@ import LoginModal from './components/LoginModal';
 import StoryListView from './components/StoryListView';
 import StoryForm from './components/StoryForm';
 
+//Required: Responsive response to width < 991px => Hamburger Menu Button
+
+
 const Styles = styled.div`
     .nav-container {
         margin: 0 auto;
