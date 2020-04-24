@@ -12,6 +12,12 @@ import styled from 'styled-components';
 import { Container, Row, Col } from 'react-bootstrap';
 
 const Styles = styled.div`
+
+    h3 {
+        padding-bottom: 25px;
+        border-bottom: 1px solid lightgray;
+    }
+
     .header-img {
         position: relative;
         left: 0;
@@ -62,7 +68,17 @@ const Styles = styled.div`
     }
 
     .facts {
-        margin-top: 2em;
+        display: flex;
+        flex-direction: column;
+        margin: 14px 0;
+    }
+
+    .col {
+        border: 1px solid lightgray;
+        border-radius: 2%;
+        padding: 60px;
+        margin: 14px 0;
+
     }
     
     @media(min-width: 600px) {
@@ -96,19 +112,20 @@ class Content extends Component {
     render() {
         return(
             <Styles>
-                <Container className="container">
+                <Container className="container" fluid='lg'>
                     <Row className="facts" id="facts">
-                        <Col>
+                        <Col className='col'>
                             <h3>What is a Refugee?</h3>
                             <p>A refugee is someone who has been forced to flee his or her country because of persecution, war, or violence. 
                                 A refugee has a well-founded fear of persecution for reasons of race, religion, nationality or political opinion.
                             </p>
                         </Col>
-                        <Col>
+                        <Col className='col'>
                             <h3>Reasons for Displacement</h3>
                             <p>Individuals and families seek asylum and safe refuge because they have fled violence, persecution, war, or natural disaster.2 Some refugees have contended with more than one of these factors at once.</p>
                         </Col>
                         </Row>
+                        <div></div>
                             <h3>Some Famous Refugees</h3>
                             <h4>Jackie Chan</h4>
                             <p> Fled to the US from Hong Kong after being threatened with Death by the Triads</p>

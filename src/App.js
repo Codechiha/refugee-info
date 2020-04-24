@@ -50,11 +50,11 @@ function Nav(props){
     return(
         <Styles>
             <div className='nav-container'>
-                <NavLink exact to="/">Refugee Stories </NavLink>
+                <NavLink exact to="/">Refugee Stories</NavLink>
                 <div className="nav">
                     <div className='nav-links'>
-                        <NavLink to="/about">About</NavLink>
-                        <NavLink to="/stories">Stories</NavLink>
+                        <NavLink to="/about"><h6>About</h6></NavLink>
+                        <NavLink to="/stories"><h6>Stories</h6></NavLink>
                         {props.loggedIn ? 
                             <NavLink to="/story-form">Share</NavLink> : 
                             null }
