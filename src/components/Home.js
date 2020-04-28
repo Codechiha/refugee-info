@@ -136,6 +136,7 @@ class Content extends Component {
                                 <img
                                 className="d-block w-100"
                                 src={jchan}
+                                style={{'max-height': '530px'}}
                                 alt="First slide"
                                 />
                                 <Carousel.Caption>
@@ -147,6 +148,7 @@ class Content extends Component {
                                 <img
                                 className="d-block w-100"
                                 src={einstein}
+                                style={{'max-height': '530px'}}
                                 alt="Third slide"
                                 />
 
@@ -159,6 +161,7 @@ class Content extends Component {
                             <Carousel.Item>
                                 <img
                                 className="d-block w-100"
+                                style={{'max-height': '530px'}}
                                 src={trapp}
                                 alt="Third slide"
                                 />
@@ -172,6 +175,7 @@ class Content extends Component {
                                 <img
                                 className="d-block w-100"
                                 src={jesus}
+                                style={{'max-height': '530px'}}
                                 alt="Third slide"
                                 />
 

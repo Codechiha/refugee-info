@@ -190,7 +190,7 @@ class LoginModal extends Component{
                                         />
                                 </InputGroup>
                                     <button onClick={this.handleRegisterSubmit} className='login-button'>Register</button>
-                                    <button onClick={() => {this.showRegister()}}>Sign-In</button>=
+                                    <button onClick={() => {this.showRegister()}} className='login-button'>Sign-In</button>
                             </form>
                         </div>
                     </Styles>
